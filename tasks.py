@@ -3,6 +3,8 @@ import subprocess
 import pathlib
 import os
 from config import OWNER
+import requests
+import time
 
 
 def hot_patch(*args):
@@ -38,4 +40,9 @@ def add_user(update, context) -> None:
         context.bot.send_message(chat_id=message.chat.id, text="You are not authorized to use this command.")
 
 def button_1_function(update, context):
-    print('door was opened')
+    response_open = requests.get("http://192.168.1.4/30000/15")
+    print("OPENED Status code: ", response_open.status_code)
+    time.sleep(1)
+    response_close = requests.get("http://192.168.1.4/30000/14")
+    print("CLOSED Status code: ", response_close.status_code)
+
