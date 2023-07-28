@@ -35,7 +35,7 @@ def add_user(update, context) -> None:
                 file.write(f"{new_user}\n")
             context.bot.send_message(chat_id=message.chat.id, text=f"User {new_user} has been added.")
         else:
-            context.bot.send_message(chat_id=message.chat.id, text="Please provide the user's id or username.")
+            context.bot.send_message(chat_id=message.chat.id, text="Please provide the user's id or username. \nCommand example:\n/adduser username\n/adduser 111111111")
     else:
         context.bot.send_message(chat_id=message.chat.id, text="You are not authorized to use this command.")
 
